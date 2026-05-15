@@ -1,0 +1,30 @@
+{
+    "name": "certificate-plugin",
+    "version": "1.0.0",
+    "main": "./dist/certificate-plugin.umd.js",
+    "module": "./dist/certificate-plugin.es.js",
+    "types": "./index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./index.d.ts",
+            "import": "./dist/certificate-plugin.es.js",
+            "require": "./dist/certificate-plugin.umd.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "vite build"
+    },
+    "peerDependencies": {
+        "react": "^18.0.0 || ^19.0.0",
+        "react-dom": "^18.0.0 || ^19.0.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-react": "^6.0.2",
+        "react": "^19.2.6",
+        "react-dom": "^19.2.6",
+        "vite": "^8.0.13"
+    }
+}
