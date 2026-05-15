@@ -1,0 +1,13 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    // Customizes the output directory for your bundle
+    outDir: 'dist', 
+    // Generates source maps for easier production debugging
+    sourcemap: true, 
+  }
+});
+ 
