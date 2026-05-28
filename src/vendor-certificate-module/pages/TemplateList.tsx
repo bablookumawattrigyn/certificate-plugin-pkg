@@ -46,7 +46,7 @@ export function TemplateList() {
   return (
     <div className="cert-templates">
       <PageHeader
-        title="Certificate Templates"
+        title="Certificate Templates 543"
         subtitle="Create, manage, and publish certificate templates for your courses."
         meta={
           !backendConnected ? (
