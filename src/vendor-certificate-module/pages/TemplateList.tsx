@@ -46,14 +46,11 @@ export function TemplateList() {
   return (
     <div className="cert-templates">
       <PageHeader
-        title="Certificate Templates 1333"
+        title="Certificate Templates"
         subtitle="Create, manage, and publish certificate templates for your courses."
         meta={
           !backendConnected ? (
-            <span className="cert-offline-banner" role="status">
-              <CertIcon name="wifi_off" size="1.6rem" />
-              Backend offline — local mode
-            </span>
+            <></>
           ) : undefined
         }
         actions={
