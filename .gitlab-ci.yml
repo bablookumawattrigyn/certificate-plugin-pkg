@@ -1,5 +1,4 @@
-# Publish @trigyn/certificate-plugin to the GitLab npm registry on version tags.
-# Create a release: git tag v1.0.0 && git push origin v1.0.0
+# Publish @dikshatrigyn/certificate-plugin to GitLab npm registry on version tags.
 
 stages:
   - test
@@ -29,7 +28,7 @@ publish-npm:
   script:
     - npm run build
     - |
-      echo "@babloo.kumawat:registry=${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/npm/" >> .npmrc
+      echo "@dikshatrigyn:registry=${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/npm/" >> .npmrc
       echo "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> .npmrc
     - npm publish
   rules:

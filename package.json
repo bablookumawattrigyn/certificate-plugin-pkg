@@ -1,13 +1,13 @@
 {
-  "name": "@babloo.kumawat/certificate-plugin",
+  "name": "@dikshatrigyn/certificate-plugin",
   "version": "1.0.3",
-  "description": "Embeddable certificate module UI — import TemplateList / CertificateList like react-bootstrap.",
+  "description": "Embeddable certificate module UI for DIKSHA — TemplateList, CertificateList, and full module routes.",
   "repository": {
     "type": "git",
     "url": "https://apps.trigyn.com/gitlab/babloo.kumawat/certificate-plugin.git"
   },
   "publishConfig": {
-    "@babloo.kumawat:registry": "https://apps.trigyn.com/api/v4/projects/babloo.kumawat%2Fcertificate-plugin/packages/npm/"
+    "@dikshatrigyn:registry": "https://apps.trigyn.com/api/v4/projects/babloo.kumawat%2Fcertificate-plugin/packages/npm/"
   },
   "type": "module",
   "main": "./dist/certificate-plugin.umd.js",
@@ -30,8 +30,7 @@
     "dev:fresh": "vite --force",
     "build": "vite build",
     "prepublishOnly": "npm run build",
-    "preview": "vite preview",
-    "sync:module": "robocopy ..\\certificate-module\\certificate-module\\src src\\vendor-certificate-module /E /XD node_modules /NFL /NDL /NJH /NJS /nc /ns /np & exit 0"
+    "preview": "vite preview"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

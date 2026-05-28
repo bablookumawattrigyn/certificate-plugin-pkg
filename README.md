@@ -1,12 +1,28 @@
-# if current version is 1.0.2
+# @dikshatrigyn/certificate-plugin
 
-# 1. Change version in package.json (e.g. 1.0.3)
-# 2. Build and commit dist
+Embeddable certificate UI for DIKSHA (`TemplateList`, `CertificateList`, builder, preview).
+
+## Dev
+
+```bash
+npm install
+npm run dev
+```
+
+## Release
+
+```bash
 npm run build
 git add package.json dist/
-git commit -m "chore: release v1.0.3"
-git tag v1.0.3
-git push origin main v1.0.3
+git commit -m "chore: release v1.0.x"
+git tag v1.0.x
+git push origin main v1.0.x
+```
 
-# 3. In diksha-react-web, update tag to #v1.0.3 and run:
-npm update '@babloo.kumawat/certificate-plugin'
+Consumers (diksha-react-web):
+
+```bash
+npm update @dikshatrigyn/certificate-plugin
+```
+
+See [docs/PUBLISHING.md](docs/PUBLISHING.md) for GitLab registry details.
