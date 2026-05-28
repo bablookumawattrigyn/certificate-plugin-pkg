@@ -1,0 +1,38 @@
+@import './_variables';
+
+@mixin cert-respond-md {
+  @media (min-width: $cert-breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin cert-respond-lg {
+  @media (min-width: $cert-breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin cert-focus-ring {
+  outline: 0;
+  box-shadow: 0 0 0 0.32rem rgba($cert-primary, 0.25);
+}
+
+@mixin cert-skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    $cert-gray-100 0%,
+    #fff 50%,
+    $cert-gray-100 100%
+  );
+  background-size: 200% 100%;
+  animation: cert-skeleton-shimmer 1.2s ease-in-out infinite;
+}
+
+@keyframes cert-skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

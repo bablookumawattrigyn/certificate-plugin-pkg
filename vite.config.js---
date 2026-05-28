@@ -1,0 +1,53 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+
+function isExternal(id) {
+  if (id === 'react' || id === 'react-dom' || id === 'react/jsx-runtime') return true;
+  if (id.startsWith('react-dom/')) return true;
+  if (id.startsWith('react/')) return true;
+  if (id === 'react-router-dom' || id.startsWith('react-router-dom/')) return true;
+  if (id === 'react-redux' || id.startsWith('react-redux/')) return true;
+  if (id === '@reduxjs/toolkit' || id.startsWith('@reduxjs/toolkit/')) return true;
+  if (id === 'react-bootstrap' || id.startsWith('react-bootstrap/')) return true;
+  if (id === '@mui/material' || id.startsWith('@mui/material/')) return true;
+  if (id === '@mui/icons-material' || id.startsWith('@mui/icons-material/')) return true;
+  if (id === '@emotion/react' || id.startsWith('@emotion/react/')) return true;
+  if (id === '@emotion/styled' || id.startsWith('@emotion/styled/')) return true;
+  if (id.startsWith('@emotion/')) return true;
+  return false;
+}
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    extensions: ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json'],
+  },
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, 'src/index.jsx'),
+      name: 'CertificatePlugin',
+      fileName: (format) => `certificate-plugin.${format}.js`,
+    },
+    rollupOptions: {
+      external: isExternal,
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          'react/jsx-runtime': 'react/jsx-runtime',
+          'react-router-dom': 'ReactRouterDOM',
+          'react-redux': 'ReactRedux',
+          '@reduxjs/toolkit': 'RTK',
+          'react-bootstrap': 'ReactBootstrap',
+          '@mui/material': 'MaterialUI',
+          '@mui/icons-material': 'MaterialUIIcons',
+          '@emotion/react': 'EmotionReact',
+          '@emotion/styled': 'EmotionStyled',
+        },
+        assetFileNames: 'certificate-plugin.[ext]',
+      },
+    },
+    cssCodeSplit: false,
+  },
+});
