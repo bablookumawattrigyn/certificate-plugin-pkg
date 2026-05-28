@@ -29,7 +29,6 @@
     "dev": "vite",
     "dev:fresh": "vite --force",
     "build": "vite build",
-    "prepare": "npm run build",
     "prepublishOnly": "npm run build",
     "preview": "vite preview",
     "sync:module": "robocopy ..\\certificate-module\\certificate-module\\src src\\vendor-certificate-module /E /XD node_modules /NFL /NDL /NJH /NJS /nc /ns /np & exit 0"
