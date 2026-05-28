@@ -4626,7 +4626,7 @@ function lc() {
 		className: "cert-templates",
 		children: [
 			/* @__PURE__ */ k($s, {
-				title: "Certificate Templates 543",
+				title: "Certificate Templates 00877",
 				subtitle: "Create, manage, and publish certificate templates for your courses.",
 				meta: s ? void 0 : /* @__PURE__ */ k(O, {}),
 				actions: /* @__PURE__ */ k(O, { children: a.role === "course_creator" && /* @__PURE__ */ A(wa, {
