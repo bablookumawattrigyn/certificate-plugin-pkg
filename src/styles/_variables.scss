@@ -1,0 +1,44 @@
+// Certificate app design tokens (BEM blocks use these via SCSS variables / CSS custom properties)
+
+:root {
+  --cert-font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --cert-radius-card: 1.2rem;
+  --cert-radius-pill: 80rem;
+  --cert-primary: #2563eb;
+  --cert-primary-dark: #1d4ed8;
+  --cert-gray-50: #f8fafc;
+  --cert-gray-100: #f1f5f9;
+  --cert-gray-200: #e2e8f0;
+  --cert-gray-500: #64748b;
+  --cert-gray-700: #334155;
+  --cert-gray-900: #0f172a;
+  --cert-success-bg: #f0fdf4;
+  --cert-success-fg: #15803d;
+  --cert-warning-bg: #fffbeb;
+  --cert-warning-fg: #b45309;
+  --cert-danger: #b91c1c;
+  --cert-danger-bg: #fef2f2;
+}
+
+$cert-primary: #2563eb;
+$cert-primary-dark: #1d4ed8;
+$cert-gray-50: #f8fafc;
+$cert-gray-100: #f1f5f9;
+$cert-gray-200: #e2e8f0;
+$cert-gray-300: #cbd5e1;
+$cert-gray-400: #94a3b8;
+$cert-gray-500: #64748b;
+$cert-gray-600: #475569;
+$cert-gray-700: #334155;
+$cert-gray-900: #0f172a;
+$cert-success-50: #f0fdf4;
+$cert-success-700: #15803d;
+$cert-warning-50: #fffbeb;
+$cert-warning-700: #b45309;
+$cert-danger-50: #fef2f2;
+$cert-danger-500: #ef4444;
+$cert-danger-700: #b91c1c;
+
+$cert-breakpoint-md: 768px;
+$cert-breakpoint-lg: 992px;
+$cert-breakpoint-xl: 1200px;

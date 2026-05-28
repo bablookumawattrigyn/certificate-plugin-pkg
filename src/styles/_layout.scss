@@ -1,0 +1,28 @@
+@import './_variables';
+
+.cert-page-shell {
+  flex: 1;
+  min-height: 100vh;
+  background-color: $cert-gray-50;
+  padding-top: 2.4rem;
+  padding-bottom: 3.2rem;
+
+  &__inner {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+
+    @media (min-width: 640px) {
+      padding-left: 2.4rem;
+      padding-right: 2.4rem;
+    }
+
+    @media (min-width: 1024px) {
+      padding-left: 3.2rem;
+      padding-right: 3.2rem;
+    }
+  }
+}

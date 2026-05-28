@@ -1,0 +1,509 @@
+@import './_variables';
+
+/* BEM utilities for certificate canvas / previews (no Tailwind). */
+
+.cert-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  &__fill-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__watermark-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  &__watermark-img {
+    width: 33%;
+    height: 33%;
+    object-fit: contain;
+  }
+
+  &__gradient-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0.8rem;
+    background: linear-gradient(90deg, #3b82f6, #a855f7, #ec4899);
+
+    &--top {
+      top: 0;
+    }
+
+    &--bottom {
+      bottom: 0;
+      background: linear-gradient(90deg, #ec4899, #a855f7, #3b82f6);
+    }
+  }
+
+  &__abs-item {
+    position: absolute;
+  }
+
+  &--fill {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__nowrap {
+    white-space: nowrap;
+  }
+}
+
+/* Template preview / PDF capture stage (landscape A4 ratio). */
+.cert-preview-stage {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
+  aspect-ratio: 1.414 / 1;
+  overflow: hidden;
+  border-radius: var(--cert-radius-card);
+
+  &--modal {
+    width: 90vw;
+    max-width: 1100px;
+  }
+}
+
+/* Builder / issuance shared surfaces */
+
+.cert-page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-bottom: 2.4rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: clamp(2.16rem, 2vw, 2.8rem);
+    font-weight: 700;
+    color: $cert-gray-900;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-size: 1.6rem;
+    color: $cert-gray-500;
+    margin: 0.56rem 0 0;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+
+  &__eyebrow {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $cert-primary;
+    margin: 0 0 0.56rem;
+  }
+}
+
+.cert-tabs {
+  border-bottom: 1px solid $cert-gray-200;
+  margin-bottom: 2.4rem;
+
+  &__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+  }
+
+  &__btn {
+    padding: 1.2rem 0.4rem;
+    font-size: 1.52rem;
+    font-weight: 600;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: $cert-gray-500;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      color: $cert-gray-700;
+    }
+
+    &--active {
+      color: $cert-primary;
+      border-bottom-color: $cert-primary;
+    }
+  }
+}
+
+.cert-builder-grid {
+  display: grid;
+  gap: 2.4rem;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 992px) {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.cert-muted {
+  color: $cert-gray-500;
+}
+
+.cert-label {
+  display: block;
+  font-size: 1.52rem;
+  font-weight: 600;
+  color: $cert-gray-700;
+  margin-bottom: 0.56rem;
+}
+
+.cert-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.cert-row-tight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid $cert-gray-100;
+}
+
+.cert-verify-card {
+  border-radius: var(--cert-radius-card);
+
+  &__icon {
+    width: 6.4rem;
+    height: 6.4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--danger {
+      background: $cert-danger-50;
+      color: $cert-danger-700;
+    }
+
+    &--success {
+      background: $cert-success-50;
+      color: $cert-success-700;
+    }
+
+    &--warning {
+      background: $cert-warning-50;
+      color: $cert-warning-700;
+    }
+  }
+}
+
+.cert-thumb-placeholder {
+  flex-shrink: 0;
+  width: 12.8rem;
+  height: 9.6rem;
+  border-radius: var(--cert-radius-card);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(37, 99, 235, 0.15));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-design-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+
+  &__card-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: $cert-gray-700;
+    margin-bottom: 1.2rem;
+  }
+
+  &__help {
+    font-size: 1.4rem;
+    color: $cert-gray-500;
+    margin-bottom: 1.2rem;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    align-items: center;
+  }
+
+  &__pill-btn {
+    padding: 0.8rem 1.6rem;
+    border-radius: var(--cert-radius-card);
+    border: 2px solid $cert-gray-200;
+    font-size: 1.52rem;
+    font-weight: 600;
+    color: $cert-gray-600;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+      border-color: $cert-gray-300;
+    }
+
+    &--active {
+      border-color: $cert-primary;
+      background: rgba($cert-primary, 0.08);
+      color: $cert-primary;
+    }
+  }
+
+  &__hint {
+    font-size: 1.28rem;
+    color: $cert-gray-500;
+    margin-top: 0.8rem;
+    margin-bottom: 0;
+  }
+
+  &__preview-wrap {
+    position: relative;
+    border-radius: var(--cert-radius-card);
+    overflow: hidden;
+    border: 1px solid $cert-gray-200;
+  }
+
+  &__preview-img {
+    width: 100%;
+    height: 16rem;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__preview-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.04);
+    pointer-events: none;
+  }
+
+  &__dropzone {
+    width: 100%;
+    border: 2px dashed $cert-gray-200;
+    border-radius: var(--cert-radius-card);
+    padding: 2.4rem;
+    text-align: center;
+    cursor: pointer;
+    background: #fff;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+
+    &:hover {
+      border-color: rgba($cert-primary, 0.55);
+      background: rgba($cert-primary, 0.04);
+    }
+  }
+
+  &__dropzone-icon {
+    font-size: 3.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  &__color-swatch {
+    flex: 1;
+    min-height: 4rem;
+    border-radius: var(--cert-radius-card);
+    border: 1px solid $cert-gray-200;
+  }
+
+  &__preset-dot {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    border: 2px solid $cert-gray-200;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      border-color: $cert-gray-400;
+    }
+
+    &--active {
+      border-color: $cert-primary;
+      transform: scale(1.08);
+    }
+  }
+
+  &__visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+
+.cert-border-config {
+  &__title {
+    font-size: 1.68rem;
+    font-weight: 600;
+    color: $cert-gray-700;
+    margin-bottom: 0.4rem;
+  }
+
+  &__help {
+    font-size: 1.44rem;
+    color: $cert-gray-500;
+    margin-bottom: 1.6rem;
+  }
+
+  &__stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  &__section-label {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $cert-gray-600;
+    margin-bottom: 0.8rem;
+  }
+
+  &__grid {
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+
+    @media (max-width: 576px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__grid--ornate {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  &__swatch {
+    padding: 0.8rem;
+    border-radius: var(--cert-radius-card);
+    border: 2px solid $cert-gray-200;
+    text-align: center;
+    font-size: 1.04rem;
+    font-weight: 600;
+    color: $cert-gray-600;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+      border-color: $cert-gray-300;
+    }
+
+    &--selected {
+      border-color: $cert-primary;
+      background: rgba($cert-primary, 0.08);
+      color: $cert-primary;
+    }
+  }
+
+  &__controls {
+    margin-top: 1.6rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid $cert-gray-100;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  &__label {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $cert-gray-600;
+    margin-bottom: 0.56rem;
+    display: block;
+  }
+
+  &__color-row {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  &__color-input {
+    width: 3.6rem;
+    height: 3.2rem;
+    padding: 2px;
+    border: 1px solid $cert-gray-200;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  &__mono {
+    max-width: 11.2rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 1.28rem;
+  }
+
+  &__preset-row {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  &__preset {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 2px solid $cert-gray-300;
+    cursor: pointer;
+    padding: 0;
+
+    &--selected {
+      border-color: $cert-primary;
+      transform: scale(1.08);
+    }
+  }
+
+  &__range {
+    width: 100%;
+    accent-color: $cert-primary;
+    cursor: pointer;
+  }
+}
+
+.cert-border-abs {
+  position: absolute;
+  pointer-events: none;
+}
+
+.cert-border-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
