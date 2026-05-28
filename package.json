@@ -1,6 +1,6 @@
 {
   "name": "@babloo.kumawat/certificate-plugin",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Embeddable certificate module UI — import TemplateList / CertificateList like react-bootstrap.",
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "dev": "vite",
     "dev:fresh": "vite --force",
     "build": "vite build",
+    "prepare": "npm run build",
     "prepublishOnly": "npm run build",
     "preview": "vite preview",
     "sync:module": "robocopy ..\\certificate-module\\certificate-module\\src src\\vendor-certificate-module /E /XD node_modules /NFL /NDL /NJH /NJS /nc /ns /np & exit 0"
