@@ -1,41 +1,39 @@
-// Responsive root scale: at 1440px, 1rem = 10px (62.5% of 16px browser default).
-// Body copy uses 1.6rem (= 16px at 1440); other rem values scale with viewport.
+// Responsive root scale scoped to plugin root only.
+// Uses a CSS custom property set on .cert-plugin-root so it does NOT affect
+// the parent application's html/body font-size.
 
-:root {
-  --root-font-size: 54.6875%;
-  --root-font-delta: 0px;
+.cert-plugin-root {
+  --cert-root-font-size: 54.6875%;
+  --cert-root-font-delta: 0px;
+  font-size: calc(var(--cert-root-font-size) + var(--cert-root-font-delta));
 }
 
 @media (min-width: 1280px) {
-  :root {
-    --root-font-size: 54.6875%;
+  .cert-plugin-root {
+    --cert-root-font-size: 54.6875%;
   }
 }
 
 @media (min-width: 1440px) {
-  :root {
-    --root-font-size: 62.5%;
+  .cert-plugin-root {
+    --cert-root-font-size: 62.5%;
   }
 }
 
 @media (min-width: 1600px) {
-  :root {
-    --root-font-size: 75%;
+  .cert-plugin-root {
+    --cert-root-font-size: 75%;
   }
 }
 
 @media (min-width: 1920px) {
-  :root {
-    --root-font-size: 87.5%;
+  .cert-plugin-root {
+    --cert-root-font-size: 87.5%;
   }
 }
 
 @media (min-width: 2560px) {
-  :root {
-    --root-font-size: 100%;
+  .cert-plugin-root {
+    --cert-root-font-size: 100%;
   }
-}
-
-html {
-  font-size: calc(var(--root-font-size) + var(--root-font-delta));
 }

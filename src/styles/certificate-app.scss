@@ -1,6 +1,5 @@
 @import './_variables';
 @import './mixins';
-@import './root-scale';
 
 // Bootstrap variable overrides (before importing Bootstrap)
 $primary: $cert-primary;
@@ -18,8 +17,42 @@ $card-border-radius: 1.2rem;
 $input-btn-padding-y: 0.8rem;
 $input-btn-padding-x: 1.44rem;
 
-@import 'bootstrap/scss/bootstrap';
+// Disable Bootstrap's global resets so they don't leak into the parent app.
+// Only component-level styles (buttons, forms, utilities, etc.) are imported.
+$enable-css-grid: false;
 
+// Scope all Bootstrap styles inside .cert-plugin-root so they never affect
+// elements outside the plugin boundary.
+.cert-plugin-root {
+  @import 'bootstrap/scss/functions';
+  @import 'bootstrap/scss/variables';
+  @import 'bootstrap/scss/variables-dark';
+  @import 'bootstrap/scss/maps';
+  @import 'bootstrap/scss/mixins';
+  @import 'bootstrap/scss/utilities';
+
+  // Component styles only — NO reboot/reset, NO body/html overrides
+  @import 'bootstrap/scss/containers';
+  @import 'bootstrap/scss/grid';
+  @import 'bootstrap/scss/forms';
+  @import 'bootstrap/scss/buttons';
+  @import 'bootstrap/scss/dropdown';
+  @import 'bootstrap/scss/modal';
+  @import 'bootstrap/scss/alert';
+  @import 'bootstrap/scss/badge';
+  @import 'bootstrap/scss/card';
+  @import 'bootstrap/scss/nav';
+  @import 'bootstrap/scss/navbar';
+  @import 'bootstrap/scss/spinners';
+  @import 'bootstrap/scss/tooltip';
+  @import 'bootstrap/scss/popover';
+  @import 'bootstrap/scss/transitions';
+  @import 'bootstrap/scss/close';
+  @import 'bootstrap/scss/helpers';
+  @import 'bootstrap/scss/utilities/api';
+}
+
+@import './root-scale';
 @import './legacy-buttons';
 @import './layout';
 @import './template-list';
@@ -31,9 +64,16 @@ $input-btn-padding-x: 1.44rem;
   line-height: 1.55;
   font-family: var(--cert-font-family);
   -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
 }
 
-.material-symbols-outlined {
+.cert-plugin-root .material-symbols-outlined {
   font-variation-settings:
     'FILL' 0,
     'wght' 400,

@@ -1,6 +1,9 @@
 @import './_variables';
 
 /* Replaces former Tailwind @layer components — used across builder / lists until fully BEM-migrated */
+/* All selectors scoped inside .cert-plugin-root to avoid leaking into parent app */
+
+.cert-plugin-root {
 
 .btn-primary {
   display: inline-flex;
@@ -149,3 +152,5 @@
 .max-w-md {
   max-width: 44.8rem;
 }
+
+} // end .cert-plugin-root

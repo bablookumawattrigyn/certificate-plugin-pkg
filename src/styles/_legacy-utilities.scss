@@ -1,8 +1,12 @@
 /**
  * Minimal substitutes for old utility `className` strings still present in some
  * vendored components (preview / issuance / builder panels) until they are migrated to BEM + Bootstrap.
+ *
+ * ALL selectors are scoped inside .cert-plugin-root so they never leak into the parent application.
  */
 @import './_variables';
+
+.cert-plugin-root {
 
 .flex {
   display: flex;
@@ -723,3 +727,5 @@
 .scale-110 {
   transform: scale(1.1);
 }
+
+} // end .cert-plugin-root
